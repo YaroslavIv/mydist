@@ -9794,6 +9794,54 @@ paths:
                   additionalProperties: {}
       tags:
         - Query
+  /example/example/show_post/{id}:
+    get:
+      summary: Queries a list of ShowPost items.
+      operationId: ExampleExampleQuery_ShowPost
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              post:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  body:
+                    type: string
+                  creator:
+                    type: string
+                  id:
+                    type: string
+                    format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          format: uint64
+      tags:
+        - Query
   /ibc.applications.fee.v1.Msg/PayPacketFee:
     post:
       summary: >-
@@ -24341,6 +24389,18 @@ definitions:
   example.example.Params:
     type: object
     description: Params defines the parameters for the module.
+  example.example.Post:
+    type: object
+    properties:
+      title:
+        type: string
+      body:
+        type: string
+      creator:
+        type: string
+      id:
+        type: string
+        format: uint64
   example.example.QueryParamsResponse:
     type: object
     properties:
@@ -24348,6 +24408,21 @@ definitions:
         description: params holds all the parameters of this module.
         type: object
     description: QueryParamsResponse is response type for the Query/Params RPC method.
+  example.example.QueryShowPostResponse:
+    type: object
+    properties:
+      post:
+        type: object
+        properties:
+          title:
+            type: string
+          body:
+            type: string
+          creator:
+            type: string
+          id:
+            type: string
+            format: uint64
   ibc.applications.fee.v1.Fee:
     type: object
     properties:
