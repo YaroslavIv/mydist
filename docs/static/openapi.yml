@@ -9621,6 +9621,46 @@ paths:
                 type: string
       tags:
         - Msg
+  /example.example.Msg/DeletePost:
+    post:
+      operationId: ExampleExampleMsg_DeletePost
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              id:
+                type: string
+                format: uint64
+      tags:
+        - Msg
   /example.example.Msg/UpdateParams:
     post:
       summary: |-
@@ -24257,6 +24297,16 @@ definitions:
       id:
         type: string
         format: uint64
+  example.example.MsgDeletePost:
+    type: object
+    properties:
+      creator:
+        type: string
+      id:
+        type: string
+        format: uint64
+  example.example.MsgDeletePostResponse:
+    type: object
   example.example.MsgUpdateParams:
     type: object
     properties:
