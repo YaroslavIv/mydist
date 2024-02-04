@@ -52,8 +52,11 @@ import (
 	"google.golang.org/protobuf/types/known/durationpb"
 
 	examplemodulev1 "example/api/example/example/module"
+	mydistmodulev1 "example/api/example/mydist/module"
 	_ "example/x/example/module" // import for side-effects
 	examplemoduletypes "example/x/example/types"
+	_ "example/x/mydist/module" // import for side-effects
+	mydistmoduletypes "example/x/mydist/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 )
 
@@ -92,6 +95,7 @@ var (
 		circuittypes.ModuleName,
 		// chain modules
 		examplemoduletypes.ModuleName,
+		mydistmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	}
 
@@ -117,6 +121,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		examplemoduletypes.ModuleName,
+		mydistmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/beginBlockers
 	}
 
@@ -136,6 +141,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		examplemoduletypes.ModuleName,
+		mydistmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/endBlockers
 	}
 
@@ -288,6 +294,10 @@ var (
 			{
 				Name:   examplemoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&examplemodulev1.Module{}),
+			},
+			{
+				Name:   mydistmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&mydistmodulev1.Module{}),
 			},
 			// this line is used by starport scaffolding # stargate/app/moduleConfig
 		},

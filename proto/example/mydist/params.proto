@@ -1,0 +1,15 @@
+syntax = "proto3";
+package example.mydist;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "example/x/mydist/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "example/x/mydist/Params";
+  option (gogoproto.equal) = true;
+
+  
+}
